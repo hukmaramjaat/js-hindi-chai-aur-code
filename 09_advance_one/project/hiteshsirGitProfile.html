@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Git Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<style>
+    body{
+        color: #F1FADA;
+        background-color: #9AD0C2;
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        font-family: "Fredoka", sans-serif;
+    }
+    .card{
+        border: 1px solid #F1FADA;
+        width: 700px;
+        height: 600px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        border-radius: 20px;
+        background: #2D9596;
+    }
+
+    .card-inside{
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .heading{
+        font-size: xx-large;
+        margin-top: 20px;
+
+    }
+
+    img{
+        width: 115px;
+        height: 115px;
+        object-fit: cover;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .name{
+        margin: 9px;
+        font-size: 33px;
+    }
+    .location{
+        margin: 0px;
+    }
+    .profile-reach{
+        display: flex;
+        gap: 63px;
+        margin-top: 30px;
+    }
+    .post{
+        margin-bottom: 5px;
+    }
+    .all-post{
+        margin: 0px;
+    }
+</style>
+<body>
+    <div class="card">
+        <div class="card-inside">
+            
+        </div>
+    </div>
+</body>
+<script>
+    const main = document.querySelector('.card-inside');
+
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl)
+    xhr.onreadystatechange = function(){
+       console.log(xhr.readyState);
+       if (xhr.readyState === 4){
+           const data = JSON.parse(this.responseText);
+            console.log(typeof data);
+            console.log(data.followers);
+            console.log(data.name)
+            
+            
+            const cardHTML = `
+            <h4 class="heading">GitHub-Profile</h4>
+                <img src="${data.avatar_url}" alt="">
+                <h2 class="name">${data.name}</h2>
+                <p class="location">${data.location}</p>
+                <div class="profile-reach">
+                    <div class="posts">
+                        <p class="post">Repos</p>
+                        <p class="all-post">${data.public_repos}</p>
+                    </div>
+                    <div class="followers">
+                        <p class="post">Followers</p>
+                        <p class="all-post">${data.followers}</p>
+                    </div>
+                    <div class="following">
+                        <p class="post">Following</p>
+                        <p class="all-post">${data.following}</p>
+                    </div>
+                </div>
+            `
+            main.innerHTML = cardHTML;
+        
+        console.log(data.name);
+    }
+}
+    xhr.send();
+    
+</script>
+</html>
