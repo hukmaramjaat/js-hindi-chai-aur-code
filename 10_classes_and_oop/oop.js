@@ -9,5 +9,22 @@ const user = {
     }
 }
 
-console.log(user.username);
-console.log(user.getUserDetails());
+// console.log(user.username);
+// console.log(user.getUserDetails());
+
+// const promiseOne = new Promise();
+// const date = new Date();
+
+function User(username, loginCount, isLoggedIn){
+    this.username = username;
+    this.loginCount = loginCount;
+    this.isLoggedIn = isLoggedIn
+
+    return this
+}
+
+const userOne = new User("Hukma", 12, true);
+const useTwo = new User("Ram", 3, true);
+
+console.log(userOne);
+console.log(useTwo);
