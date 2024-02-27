@@ -5,6 +5,7 @@ const user = {
 
     getUserDetails: function () {
         // console.log("Got user details from database")
+        // console.log(this);
         console.log(`Username: ${this.username}`)
     }
 }
@@ -14,6 +15,7 @@ const user = {
 
 // const promiseOne = new Promise();
 // const date = new Date();
+// console.log(this)
 
 function User(username, loginCount, isLoggedIn){
     this.username = username;
@@ -26,5 +28,5 @@ function User(username, loginCount, isLoggedIn){
 const userOne = new User("Hukma", 12, true);
 const useTwo = new User("Ram", 3, true);
 
-console.log(userOne);
+console.log(userOne.constructor);
 console.log(useTwo);
