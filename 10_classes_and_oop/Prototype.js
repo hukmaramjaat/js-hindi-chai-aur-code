@@ -52,4 +52,4 @@ String.prototype.trueLength = function(){
 
 anotherUsername.trueLength();
 
-"hukma    ".trueLength()
+"hukma    ".trueLength();
